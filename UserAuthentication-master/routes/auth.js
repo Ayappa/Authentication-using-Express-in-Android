@@ -7,6 +7,8 @@ const User = require("../models/Users");
 const { check, validationResult } = require("express-validator");
 const auth = require("../middleware/auth");
 
+
+
 router.get("/", auth, (req, res) => {
 	if (res) {
 		User.findById(req.user.id, (err, post) => {
