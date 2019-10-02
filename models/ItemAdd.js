@@ -19,7 +19,7 @@ const mongoose = require('mongoose');const Items = mongoose.Schema({
     },
     count:{
         type:Number,
-        required:true
+       
     },
    
 })
