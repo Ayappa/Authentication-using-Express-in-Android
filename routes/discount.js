@@ -24,7 +24,7 @@ var json = {
 		{
 			discount: 20,
 			name: "Dial Soap",
-			photo: "jelly-beans.png",
+			photo: "jellybeans.png",
 			price: 2.99,
 			region: "lifestyle"
 		},
@@ -38,7 +38,7 @@ var json = {
 		{
 			discount: 15,
 			name: "Scotch Brite Sponges",
-			photo: "scotch-brite-sponges.png",
+			photo: "scotchbritesponges.png",
 			price: 5.89,
 			region: "lifestyle"
 		},
@@ -52,7 +52,7 @@ var json = {
 		{
 			discount: 15,
 			name: "Coca Cola",
-			photo: "coca-cola.png",
+			photo: "cocacola.png",
 			price: 6.99,
 			region: "grocery"
 		},
@@ -66,7 +66,7 @@ var json = {
 		{
 			discount: 10,
 			name: "Organix Conditioner",
-			photo: "organix-conditioner.png",
+			photo: "organixconditioner.png",
 			price: 13.46,
 			region: "lifestyle"
 		},
@@ -80,7 +80,7 @@ var json = {
 		{
 			discount: 15,
 			name: "Cranberry Cocktail",
-			photo: "cranberry-cocktail.png",
+			photo: "cranberrycocktail.png",
 			price: 1.89,
 			region: "grocery"
 		},
@@ -94,14 +94,14 @@ var json = {
 		{
 			discount: 15,
 			name: "HI-C Fruit Punch",
-			photo: "hi-c-fruit-punch.png",
+			photo: "hicfruitpunch.png",
 			price: 4.67,
 			region: "grocery"
 		},
 		{
 			discount: 10,
 			name: "Nectarines",
-			photo: "fresh-nectarines.png",
+			photo: "freshnectarines.png",
 			price: 3.67,
 			region: "produce"
 		},
@@ -115,7 +115,7 @@ var json = {
 		{
 			discount: 15,
 			name: "US Weekly",
-			photo: "us-weekly.png",
+			photo: "usweekly.png",
 			price: 4.99,
 			region: "lifestyle"
 		}
