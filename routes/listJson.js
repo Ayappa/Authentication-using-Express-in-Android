@@ -64,4 +64,42 @@ router.put("/", auth, (req, res) => {
 	}
 });
 
+router.put("/delete", auth, (req, res) => {
+	if (req) {
+		//res.json(jsonobj);
+		const { image, name, price } = req.body;
+		Item.findOne({ userId: req.user.id, name }, (error, items) => {
+			if (items) {
+				var count = items.count + 1;
+				if (items.count == 0) {
+					Item.findByIdAndDelete({ userId: req.user.id, name }, (error, res)=> {
+						if(res){
+							return res.json(res);
+
+						}else{
+							return res.json(error);
+
+						}
+					});
+				} else {
+					Item.findOneAndUpdate(
+						{ userId: req.user.id, name },
+						{ $set: { userId: req.user.id, image, name, price, count: count } },
+						(err, itemList) => {
+							if (itemList) {
+								return res.json(count);
+							} else {
+								return res.send(err);
+							}
+						}
+					);
+				}
+				//return res.json({ count });
+			}
+		});
+	} else {
+		return res.status(400).json(err);
+	}
+});
+
 module.exports = router;
