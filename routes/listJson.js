@@ -77,7 +77,7 @@ router.put("/delete", auth, (req, res) => {
 						{ userId: req.user.id, name },
 						(error, rest) => {
 							if (rest) {
-								return res.json({ msg: "Item deleted" });
+								return res.json("Item deleted");
 							} else {
 								return res.json(error);
 							}
@@ -98,7 +98,7 @@ router.put("/delete", auth, (req, res) => {
 				}
 				//return res.json({ count });
 			} else {
-				return res.json({ msg: "Item does not exist" });
+				return res.json("Item does not exist");
 			}
 		});
 	} else {
