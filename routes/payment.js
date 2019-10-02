@@ -67,7 +67,7 @@ router.post(
 				if (result) {
 					console.log("got");
 
-					res.send({ msg: result.message });
+					res.send(result);
 				} else {
 					res.send({ msg: err });
 				}
