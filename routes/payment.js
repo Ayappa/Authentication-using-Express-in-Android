@@ -21,7 +21,7 @@ var token;
 router.get("/", auth, (req, res) => {
 	if (res) {
 		token = req.header("x-auth-token");
-		gateway.clientToken.generate({}, function(err, response) {
+		gateway.clientToken.generate({  customerId: req.user.id}, function(err, response) {
 			res.send({ client_token: response.clientToken });
 		});
 	} else {
@@ -54,23 +54,26 @@ router.post(
 		var nonceFromTheClient = req.body.nonce;
 		var { amount } = req.body;
 
-		gateway.paymentMethod.create({
-			id:req.user.id,
-			paymentMethodNonce: nonceFromTheClient
-		  }, function (err, result) { });
-		gateway.customer.create({
-			id:req.user.id,
-			paymentMethodNonce: nonceFromTheClient
-		  }, function (err, result) {
-			result.success;
-			// true
+		// gateway.paymentMethod.create({
+		// 	id:req.user.id,
+		// 	paymentMethodNonce: nonceFromTheClient
+		//   }, function (err, result) { });
+		// gateway.customer.create({
+		// 	id:req.user.id,
+		// 	paymentMethodNonce: nonceFromTheClient
+		//   }, function (err, result) {
+		// 	result.success;
+		// 	// true
 		  
-			result.customer.id;
-			// e.g 160923
+		// 	result.customer.id;
+		// 	// e.g 160923
 		  
-			result.customer.paymentMethods[0].token;
-			// e.g f28wm
-		  });
+		// 	result.customer.paymentMethods[0].token;
+		// 	// e.g f28wm
+		//   });
+
+		 // gateway.paymentMethod.find(token, function (err, paymentMethod) {});
+
 
 		// Use payment method nonce here
 		gateway.transaction.sale(
