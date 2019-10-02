@@ -70,17 +70,19 @@ router.put("/delete", auth, (req, res) => {
 		const { image, name, price } = req.body;
 		Item.findOne({ userId: req.user.id, name }, (error, items) => {
 			if (items) {
-				var count = items.count + 1;
-				if (items.count == 0) {
-					Item.findByIdAndDelete({ userId: req.user.id, name }, (error, res)=> {
-						if(res){
-							return res.json(res);
+				var count = items.count - 1;
 
-						}else{
-							return res.json(error);
-
+				if (count == 0) {
+					Item.findOneAndDelete(
+						{ userId: req.user.id, name },
+						(error, rest) => {
+							if (rest) {
+								return res.json({ msg: "Item deleted" });
+							} else {
+								return res.json(error);
+							}
 						}
-					});
+					);
 				} else {
 					Item.findOneAndUpdate(
 						{ userId: req.user.id, name },
@@ -95,6 +97,8 @@ router.put("/delete", auth, (req, res) => {
 					);
 				}
 				//return res.json({ count });
+			} else {
+				return res.json({ msg: "Item does not exist" });
 			}
 		});
 	} else {
