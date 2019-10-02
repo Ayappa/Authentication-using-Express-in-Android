@@ -106,4 +106,31 @@ router.put("/delete", auth, (req, res) => {
 	}
 });
 
+router.delete("/deleteAll", auth, (req, res) => {
+	if (req) {
+		//res.json(jsonobj);
+		Item.find({ userId: req.user.id }, (err, ress) => {
+			if(ress){
+				return res.json("cart empty");
+
+			}else{
+				return res.json({err});
+
+			}
+			// res.forEach( function (item) {
+			// 	item.remove();
+			//   });t
+
+			// Item.findAndDelete({ userId: req.user.id }, (error, rest) => {
+			// 	if (rest) {
+			// 		return res.json("Item deleted");
+			// 	} else {
+			// 		return res.json(error);
+			// 	}
+			// });
+		}).remove().exec();;
+	}
+	//return res.json({ count });
+});
+
 module.exports = router;
