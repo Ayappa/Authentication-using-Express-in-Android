@@ -5,13 +5,11 @@ const auth = require("../middleware/auth");
 const Item = require("../models/ItemAdd");
 router.post("/", auth, (req, res) => {
 	if (res) {
-		Item.find({userId: req.user.id},(err,iteams)=>{
-			if(iteams){
-			return res.json(iteams);
-			}else
-			return res.json(err);
-
-		})
+		Item.find({ userId: req.user.id }, (err, iteams) => {
+			if (iteams) {
+				return res.json(iteams);
+			} else return res.json(err);
+		});
 	} else {
 		return res.status(400).json(err);
 	}
@@ -37,7 +35,7 @@ router.put("/", auth, (req, res) => {
 					{ $set: { userId: req.user.id, image, name, price, count: count } },
 					(err, itemList) => {
 						if (itemList) {
-							return res.json({count});
+							return res.send(count);
 						} else {
 							return res.send(err);
 						}
@@ -56,7 +54,7 @@ router.put("/", auth, (req, res) => {
 					if (err) {
 						return res.send(err);
 					}
-					return res.send(item);
+					return res.send(item.count);
 				});
 				//r
 			}
