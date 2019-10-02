@@ -35,7 +35,7 @@ router.put("/", auth, (req, res) => {
 					{ $set: { userId: req.user.id, image, name, price, count: count } },
 					(err, itemList) => {
 						if (itemList) {
-							return res.send(count);
+							return res.json(count);
 						} else {
 							return res.send(err);
 						}
@@ -54,7 +54,7 @@ router.put("/", auth, (req, res) => {
 					if (err) {
 						return res.send(err);
 					}
-					return res.send(item.count);
+					return res.json(item.count);
 				});
 				//r
 			}
