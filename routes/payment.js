@@ -54,7 +54,10 @@ router.post(
 		var nonceFromTheClient = req.body.nonce;
 		var { amount } = req.body;
 
-
+		gateway.paymentMethod.create({
+			id:req.user.id,
+			paymentMethodNonce: nonceFromTheClient
+		  }, function (err, result) { });
 		gateway.customer.create({
 			id:req.user.id,
 			paymentMethodNonce: nonceFromTheClient
