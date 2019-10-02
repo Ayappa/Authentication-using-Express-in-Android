@@ -37,7 +37,7 @@ router.put("/", auth, (req, res) => {
 					{ $set: { userId: req.user.id, image, name, price, count: count } },
 					(err, itemList) => {
 						if (itemList) {
-							return res.json("added one item");
+							return res.json({count});
 						} else {
 							return res.send(err);
 						}
